@@ -64,11 +64,11 @@ dotnet ef database update
 dotnet run
 ```
 
-## ⚠️ Ambiente Local
+⚠️ Ambiente Local
 
 Esta API roda localmente. Não há deploy disponível no momento.
-Após iniciar a aplicação, estará disponível em `https://localhost:????`
-
+A porta é definida automaticamente pelo .NET — verifique no terminal
+ao rodar `dotnet run` ou no arquivo `Properties/launchSettings.json`.
 ---
 
 ## 📚 Documentação da API
@@ -76,7 +76,7 @@ Após iniciar a aplicação, estará disponível em `https://localhost:????`
 Após iniciar a aplicação, acesse a interface interativa em:
 
 ```
-https://localhost:????/scalar/v1
+https://localhost:[porta]/scalar/v1
 ```
 
 ---
@@ -157,7 +157,7 @@ Api_Financeira/
 ### Criar um Ganho
 
 ```http
-POST https://localhost:????/api/ganho
+POST https://localhost:[porta]/api/ganho
 Content-Type: application/json
 
 {
@@ -169,7 +169,7 @@ Content-Type: application/json
 ### Criar um Gasto
 
 ```http
-POST https://localhost:????/api/gasto
+POST https://localhost:[porta]/api/gasto
 Content-Type: application/json
 
 {
@@ -182,7 +182,7 @@ Content-Type: application/json
 ### Criar uma Reserva
 
 ```http
-POST https://localhost:????/api/reserva
+POST https://localhost:[porta]/api/reserva
 Content-Type: application/json
 
 {
@@ -195,7 +195,7 @@ Content-Type: application/json
 ### Ver Resumo do Mês
 
 ```http
-GET https://localhost:????/api/resumo/mes/5/ano/2025
+GET https://localhost:[porta]/api/resumo/mes/5/ano/2025
 ```
 
 Resposta:
@@ -257,7 +257,7 @@ dotnet ef database update
 ### Porta já está em uso
 
 ```bash
-dotnet run --urls "https://localhost:????"
+dotnet run --urls "https://localhost:[porta]"
 ```
 
 ### Pacotes NuGet não encontrados
