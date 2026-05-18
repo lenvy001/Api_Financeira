@@ -64,7 +64,10 @@ dotnet ef database update
 dotnet run
 ```
 
-A API estará disponível em `https://localhost:7117`
+## ⚠️ Ambiente Local
+
+Esta API roda localmente. Não há deploy disponível no momento.
+Após iniciar a aplicação, estará disponível em `https://localhost:????`
 
 ---
 
@@ -73,7 +76,7 @@ A API estará disponível em `https://localhost:7117`
 Após iniciar a aplicação, acesse a interface interativa em:
 
 ```
-https://localhost:7117/scalar/v1
+https://localhost:????/scalar/v1
 ```
 
 ---
@@ -154,7 +157,7 @@ Api_Financeira/
 ### Criar um Ganho
 
 ```http
-POST https://localhost:7117/api/ganho
+POST https://localhost:????/api/ganho
 Content-Type: application/json
 
 {
@@ -166,7 +169,7 @@ Content-Type: application/json
 ### Criar um Gasto
 
 ```http
-POST https://localhost:7117/api/gasto
+POST https://localhost:????/api/gasto
 Content-Type: application/json
 
 {
@@ -179,7 +182,7 @@ Content-Type: application/json
 ### Criar uma Reserva
 
 ```http
-POST https://localhost:7117/api/reserva
+POST https://localhost:????/api/reserva
 Content-Type: application/json
 
 {
@@ -192,7 +195,7 @@ Content-Type: application/json
 ### Ver Resumo do Mês
 
 ```http
-GET https://localhost:7117/api/resumo/mes/5/ano/2025
+GET https://localhost:????/api/resumo/mes/5/ano/2025
 ```
 
 Resposta:
@@ -254,7 +257,7 @@ dotnet ef database update
 ### Porta já está em uso
 
 ```bash
-dotnet run --urls "https://localhost:7118"
+dotnet run --urls "https://localhost:????"
 ```
 
 ### Pacotes NuGet não encontrados
@@ -277,7 +280,6 @@ dotnet tool install -g dotnet-ef --version 9.0.0
 **Vítor Fernando**
 
 - GitHub: [@lenvy001](https://github.com/lenvy001)
-- Email: camposvitorfernando@gmail.com
 
 ---
 
