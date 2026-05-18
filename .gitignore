@@ -1,0 +1,35 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build Folders
+bin/
+obj/
+
+# Rider
+.idea/
+
+# Dotnet
+*.db
+*.db-shm
+*.db-wal
+*.pdb
+
+# EF Migrations history sometimes contain local data
+Migrations/**/ModelSnapshot.cs
+
+# Local appsettings (do not commit secrets)
+appsettings.Development.json
+secrets.json
+
+# JetBrains Rider
+.idea/
+
+# Node
+node_modules/
+
+# Logs
+*.log
