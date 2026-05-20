@@ -1,6 +1,7 @@
 ﻿using api_financeiro.Data;
 using api_financeiro.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace api_financeiro.Controllers
 {
@@ -16,19 +17,11 @@ namespace api_financeiro.Controllers
 
         // GET api/resumo → resumo geral de tudo
         [HttpGet]
-        public IActionResult GetResumoGeral()
+        public async Task<IActionResult> GetResumoGeral()
         {
-            var totalGanhos = _context.Ganhos
-                .ToList()
-                .Sum(g => g.Valor);
-
-            var totalGastos = _context.Gastos
-                .ToList()
-                .Sum(g => g.Valor);
-
-            var totalReservas = _context.Reservas
-                .ToList()
-                .Sum(r => r.Valor);
+            var totalGanhos = await _context.Ganhos.SumAsync(g => g.Valor);
+            var totalGastos = await _context.Gastos.SumAsync(g => g.Valor);
+            var totalReservas = await _context.Reservas.SumAsync(r => r.Valor);
 
             return Ok(new
             {
