@@ -5,11 +5,6 @@ using api_financeiro.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(policy =>
-        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-});
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -31,7 +26,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors(); // ← precisa estar aqui
+
 app.UseAuthorization();
 app.MapControllers();
 

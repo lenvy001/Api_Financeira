@@ -1,6 +1,8 @@
 ﻿using api_financeiro.Data;
 using api_financeiro.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace api_financeiro.Controllers
 {
@@ -22,12 +24,17 @@ namespace api_financeiro.Controllers
         }
 
         [HttpGet("mes/{mes}/ano/{ano}")]
-        public IActionResult GetPorMesEAno(int mes, int ano)
+        public async Task<IActionResult> GetPorMesEAno(int mes, int ano)
         {
-            var filtrados = _context.Gastos
-                .ToList()
-                .Where(g => g.Mes == mes && g.Ano == ano)
-                .ToList();
+            if (mes < 1 || mes > 12)
+                return BadRequest("Mês inválido.");
+
+            var dataInicio = new DateOnly(ano, mes, 1);
+            var dataFim = dataInicio.AddMonths(1).AddDays(-1);
+
+            var filtrados = await _context.Gastos
+                .Where(g => g.Data >= dataInicio && g.Data <= dataFim)
+                .ToListAsync();
 
             if (!filtrados.Any())
                 return NotFound($"Nenhum gasto encontrado para {mes}/{ano}.");
@@ -36,12 +43,14 @@ namespace api_financeiro.Controllers
         }
 
         [HttpGet("ano/{ano}")]
-        public IActionResult GetPorAno(int ano)
+        public async Task<IActionResult> GetPorAno(int ano)
         {
-            var filtrados = _context.Gastos
-                .ToList()
-                .Where(g => g.Ano == ano)
-                .ToList();
+            var dataInicio = new DateOnly(ano, 1, 1);
+            var dataFim = new DateOnly(ano, 12, 31);
+
+            var filtrados = await _context.Gastos
+                .Where(g => g.Data >= dataInicio && g.Data <= dataFim)
+                .ToListAsync();
 
             if (!filtrados.Any())
                 return NotFound($"Nenhum gasto encontrado para o ano {ano}.");
